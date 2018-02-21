@@ -1,0 +1,54 @@
+﻿@model AspNetFinal.Models.Departament
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Departament</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.depart_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.depart_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.depart_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <form class="new" method="post" action="/jobs">
+            <input name="des_name" placeholder="Designation" />
+            <input type="button" value="Add" onclick="addInput('dynamicInput');" />
+            <div id="dynamicInput"></div>
+        </form>
+        <script>
+            var choices = ["ne", "two"];
+
+            function addInput(divName) {
+                var newDiv = document.createElement('div');
+                var selectHTML = "";                
+                for (i = 0; i < choices.length; i = i + 1) {
+                    selectHTML = "<input name='des_name' placeholder='Designations'/>";
+                }                
+                newDiv.innerHTML = selectHTML;
+                document.getElementById(divName).appendChild(newDiv);
+            }
+        </script>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ffc84ddb6eb4d37b844673d79c19e0d" Name="Diagram1">
+        <EntityTypeShape EntityType="AspNetFinalModel.Attendence" Width="1.5" PointX="7.125" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Award" Width="1.5" PointX="7" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Departament" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Designation" Width="1.5" PointX="2.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Employee" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Gender" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Holiday" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Leave_status" Width="1.5" PointX="7.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Leave_type" Width="1.5" PointX="3.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Notice_Board" Width="1.5" PointX="2.5" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Attendence_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Attendence_Leave_type" ManuallyRouted="false" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Award_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Designation_Designation" ManuallyRouted="false" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Employee_Departament" ManuallyRouted="false" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Employee_Designation" ManuallyRouted="false" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Employee_Gender" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Admin" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="AspNetFinalModel.Leave_App" Width="1.5" PointX="8.625" PointY="3.125" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Leave_App_Employee" />
+        <AssociationConnector Association="AspNetFinalModel.FK_Leave_App_Leave_status" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

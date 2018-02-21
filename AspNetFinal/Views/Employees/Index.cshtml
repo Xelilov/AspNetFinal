@@ -1,0 +1,109 @@
+﻿@model IEnumerable<AspNetFinal.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_photo)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.emp_date_of_joining)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.emp_work_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departament.depart_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation.desig_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_fathername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_dateof_birth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_date_of_joining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_exit_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_work_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_resume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_offer_letter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_joining_letter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_contact_and_argue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_ID_proof)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departament.depart_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation.desig_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender.gender_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
