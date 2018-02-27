@@ -10,6 +10,7 @@ using AspNetFinal.Models;
 
 namespace AspNetFinal.Controllers
 {
+    [AuthorizationFilter]
     public class DepartamentsController : Controller
     {
         private AspNetFinalEntities db = new AspNetFinalEntities();
@@ -48,7 +49,7 @@ namespace AspNetFinal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,depart_name")] Departament departament, FormCollection designation)
+        public ActionResult Create( Departament departament, FormCollection designation)
         {
             if (ModelState.IsValid)
             {                   

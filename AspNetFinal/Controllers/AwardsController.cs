@@ -10,11 +10,12 @@ using AspNetFinal.Models;
 
 namespace AspNetFinal.Controllers
 {
+    [AuthorizationFilter]
     public class AwardsController : Controller
     {
         private AspNetFinalEntities db = new AspNetFinalEntities();
 
-        // GET: Awards
+        // GET: Awards        
         public ActionResult Index()
         {
             var awards = db.Awards.Include(a => a.Employee);

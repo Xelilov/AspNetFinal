@@ -10,6 +10,7 @@ using AspNetFinal.Models;
 
 namespace AspNetFinal.Controllers
 {
+    [AuthorizationFilter]
     public class Notice_BoardController : Controller
     {
         private AspNetFinalEntities db = new AspNetFinalEntities();

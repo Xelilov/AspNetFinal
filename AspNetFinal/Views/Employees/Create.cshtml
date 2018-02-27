@@ -7,7 +7,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","Employees", FormMethod.Post, new { enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
@@ -66,7 +66,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.emp_photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.emp_photo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emp_photo, new { htmlAttributes = new { @class = "form-control" , type="file" } })
                 @Html.ValidationMessageFor(model => model.emp_photo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -140,40 +140,60 @@
         <div class="form-group">
             @Html.LabelFor(model => model.emp_resume, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.emp_resume, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emp_resume, new { htmlAttributes = new { @class = "form-control" , type="file"} })
                 @Html.ValidationMessageFor(model => model.emp_resume, "", new { @class = "text-danger" })
+                @if (ViewBag.resume_error != null)
+                {
+                    <label class="alert alert-danger" >@ViewBag.resume_error</label>
+                }
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.emp_offer_letter, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.emp_offer_letter, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emp_offer_letter, new { htmlAttributes = new { @class = "form-control", type = "file" } })
                 @Html.ValidationMessageFor(model => model.emp_offer_letter, "", new { @class = "text-danger" })
+                @if (ViewBag.offer_error != null)
+                {
+                    <label class="alert alert-danger">@ViewBag.offer_error</label> 
+                }
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.emp_joining_letter, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.emp_joining_letter, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emp_joining_letter, new { htmlAttributes = new { @class = "form-control", type = "file" } })
                 @Html.ValidationMessageFor(model => model.emp_joining_letter, "", new { @class = "text-danger" })
+                @if (ViewBag.loining_error != null)
+                {
+                    <label class="alert alert-danger">@ViewBag.loining_error</label> 
+                }
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.emp_contact_and_argue, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.emp_contact_and_argue, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emp_contact_and_argue, new { htmlAttributes = new { @class = "form-control", type = "file" } })
                 @Html.ValidationMessageFor(model => model.emp_contact_and_argue, "", new { @class = "text-danger" })
+                @if (ViewBag.contact_error != null)
+                {
+                    <label class="alert alert-danger">@ViewBag.contact_error</label> 
+                }
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.emp_ID_proof, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.emp_ID_proof, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emp_ID_proof, new { htmlAttributes = new { @class = "form-control", type = "file" } })
                 @Html.ValidationMessageFor(model => model.emp_ID_proof, "", new { @class = "text-danger" })
+                @if (ViewBag.proof_error != null)
+                {
+                    <label class="alert alert-danger">@ViewBag.proof_error</label> 
+                }
             </div>
         </div>
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AspNetFinal.Controllers
 {
+    [AuthorizationFilter]
     public class AdminController : Controller
     {
         // GET: Admin

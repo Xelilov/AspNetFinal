@@ -10,6 +10,7 @@ using AspNetFinal.Models;
 
 namespace AspNetFinal.Controllers
 {
+    [AuthorizationFilter]
     public class HolidaysController : Controller
     {
         private AspNetFinalEntities db = new AspNetFinalEntities();

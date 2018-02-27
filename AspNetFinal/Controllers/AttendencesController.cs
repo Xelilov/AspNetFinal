@@ -10,6 +10,7 @@ using AspNetFinal.Models;
 
 namespace AspNetFinal.Controllers
 {
+    [AuthorizationFilter]
     public class AttendencesController : Controller
     {
         private AspNetFinalEntities db = new AspNetFinalEntities();
@@ -39,8 +40,9 @@ namespace AspNetFinal.Controllers
         // GET: Attendences/Create
         public ActionResult Create()
         {
-            ViewBag.atten_emp_id = new SelectList(db.Employees, "id", "emp_fullname");
+            ViewBag.atten_emp_id = new SelectList(db.Employees, "id", "emp_fullname");            
             ViewBag.atten_leave_type_id = new SelectList(db.Leave_type, "id", "type_name");
+            List<Attendence> atten = new List<Attendence> { new Attendence { id=0, atten_emp_id=0,atten_status=true,atten_leave_type_id=0,atten_date=null,atten_reason=""} };
             return View();
         }
 
@@ -53,6 +55,10 @@ namespace AspNetFinal.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+
+
                 db.Attendences.Add(attendence);
                 db.SaveChanges();
                 return RedirectToAction("Index");

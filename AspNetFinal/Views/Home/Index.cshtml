@@ -1,31 +1,329 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model AspNetFinal.Models.UserViewModel
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="~/profile/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/profile/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+    <section id="navbar_menu">
+        <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark">
+            <div class="container">                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">HOME </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="sub_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 Leave <i class="fas fa-angle-down fa-xs"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="sub_menu">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target=".apply_leave">Apply Leave</a>
+                                <a class="dropdown-item" href="/Home/MYLeave">My Leave</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="sub_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                MY ACCOUNT <i class="fas fa-angle-down fa-xs"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="sub_menu">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target=".change_password">Change Pasword</a>
+                                <a class="dropdown-item" href="/UserLog/LogOut" data-toggle="modal" data-target="#log_out_modal">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section id="profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <div class="profile_img">
+                        <img src="~/Uploads/Images/@Model._employee.emp_photo" style="width:300px;height:300px;">
+                    </div>
+                    <div class="user_about">
+                        <h5>@Model._employee.emp_fullname</h5>
+                        <span>Senior Android Developer</span>                      
+                    </div>  
+                    <div class="work_for">
+                        <p>
+                            <b>At work for :</b>
+                            <span>@Model._employee.emp_date_of_joining</span>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="user_points">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @*<h5>@Model._attend.Count()</h5>*@
+                                <span>ATTENDANCE</span>
+                            </div>
+                            <div class="col-md-4">
+                                @*<h5>@Model._leave_app.Count()</h5>*@
+                                <span>LEAVE</span>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>@Model._award.Count()</h5>
+                                <span>AWARDS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="contain">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="item_title">
+                                            <h5> <i class="fas fa-pencil-alt"></i>  Personal Details</h5>
+                                        </div>
+                                        <div class="item_contain">
+                                            <table class="table table-light margin-bottom-0">
+                                                <tbody>
+                                                <tr>
+                                                    <td> <span class="primry-link">Name</span> </td>
+                                                    <td>@Model._employee.emp_fullname</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Father name</span></td>
+                                                    <td>@Model._employee.emp_fathername</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">DOB</span></td>
+                                                    <td>@Model._employee.emp_date_of_joining</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Gender</span></td>
+                                                    <td>@Model._employee.Gender.gender_name</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Email</span></td>
+                                                    <td>@Model._employee.emp_email</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Phone</span></td>
+                                                    <td>@Model._employee.emp_phone</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><span class="primry-link">Local Address</span></td>
+                                                    <td>@Model._employee.emp_address</td>
+                                                </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="item_title">
+                                            <h5><i class="fas fa-briefcase"></i>Company Details</h5>
+                                        </div>
+                                        <div class="item_contain">
+                                            <table class="table table-light margin-bottom-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td> <span class="primry-link">Emp ID</span> </td>
+                                                        <td>@Model._employee.id</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td> <span class="primry-link">Department</span> </td>
+                                                        <td>@Model._employee.Departament.depart_name</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <span class="primry-link">Designation</span> </td>
+                                                        <td>@Model._employee.Designation.desig_name</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td> <span class="primry-link">Date of Joining</span> </td>
+                                                        <td>@Model._employee.emp_date_of_joining</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <span class="primry-link">Salary ($)</span> </td>
+                                                        <td>
+                                                            <p>
+                                                                @Model._employee.emp_salary
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                              
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="item_title">
+                                            <h5><i class="fas fa-bullhorn"></i>Notice Board</h5>
+                                        </div>
+                                        <div class="item_contain scrool_contain">
+                                            @foreach (var item in Model._notice)
+                                             {
+                                                <div class="item">
+                                                    <div class="date text-center">
+                                                        <h2 style="font-size:1.1em;">@item.notice_title</h2>
+                                                    </div>
+                                                    <a href="#">@item.notice_content</a>
+                                                    <p>@item.notice_status</p>
+                                                </div>
+                                             }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="item_title">
+                                            <h5><i class="far fa-paper-plane"></i> Upcoming Holiday</h5>
+                                        </div>
+                                        <div class="item_contain scrool_contain">
+                                            @foreach (var item in Model._holidays)
+                                             {
+                                                <div class="alert-blocks alert-danger ">
+                                                    <span>@item.holiday_name</span>
+                                                    <small class="float-right"><em>@item.holiday_date</em></small>
+                                                </div>
+                                             }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="item_title">
+                                            <h5><i class="fas fa-trophy"></i>Awards</h5>
+                                        </div>
+                                        <div class="item_contain scrool_contain awards">
+                                            @foreach (var item in Model._award)
+                                             {
+                                                <div class="alert-blocks">
+                                                    <b>@item.award_emp_id</b>
+                                                    <small class="award-name">@item.award_name</small>
+                                                    <small class="float-right"><em>@item.award_date</em></small>
+                                                </div>
+                                             }                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply_modals">
+        <div class="modal fade apply_leave" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Apply Leave</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            @using (Html.BeginForm("Index", "Home"))
+                            {
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                            <label>Leave date : </label>
+                                            <input type="date" class="form-control" name="leave_date">
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <label>Leave resion : </label>
+                                             <textarea class="form-control" name="leave_reason" style="height: 124px"></textarea>
+                                         </div>
+                                    <button type="submit" class="btn btn-success float-right">Submit</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="password_modals">
+        <div class="modal fade change_password" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Change Password</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    @Html.BeginForm("Changepass","Home", FormMethod.Post)
+                    {
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Old Password : </label>
+                                            <input type="password" class="form-control" name="oldpass"
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>New Password : </label>
+                                            <input type="password" class="form-control" name="newpass">
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-warning float-right">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="log_out">
+        <div class="modal fade" id="log_out_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Log Out</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you wont exit this app ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary"><a href="/LoginUser/LogOut">Logout</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/profile/js/jquery.js"></script>
+    <script src="~/profile/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/profile/js/script.js"></script>
+</body>
+</html>
